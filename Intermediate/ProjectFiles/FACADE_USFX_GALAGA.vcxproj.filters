@@ -1,0 +1,231 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <None Include="..\..\FACADE_USFX_GALAGA.uproject" />
+    <Filter Include="Source">
+      <UniqueIdentifier>{8BA2E672-61A7-4F71-ADEC-8989161E4428}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Source\FACADE_USFX_GALAGA.Target.cs">
+      <Filter>Source</Filter>
+    </None>
+    <None Include="..\..\Source\FACADE_USFX_GALAGAEditor.Target.cs">
+      <Filter>Source</Filter>
+    </None>
+    <Filter Include="Config">
+      <UniqueIdentifier>{196E1CB7-5D3A-495C-85FD-1832906770E1}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Config\DefaultEditor.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultEditorPerProjectUserSettings.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultEngine.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultGame.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultInput.ini">
+      <Filter>Config</Filter>
+    </None>
+    <Filter Include="Source\FACADE_USFX_GALAGA">
+      <UniqueIdentifier>{2A45CCAE-C99F-46D1-88E6-ED5905FD6F4E}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\FACADE_USFX_GALAGA\ASTEROIDES.cpp">
+      <Filter>Source\FACADE_USFX_GALAGA</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\FACADE_USFX_GALAGA\ASTEROIDES.h">
+      <Filter>Source\FACADE_USFX_GALAGA</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\FACADE_USFX_GALAGA\Capsulas_P.cpp">
+      <Filter>Source\FACADE_USFX_GALAGA</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\FACADE_USFX_GALAGA\Capsulas_P.h">
+      <Filter>Source\FACADE_USFX_GALAGA</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\FACADE_USFX_GALAGA\COMETA.cpp">
+      <Filter>Source\FACADE_USFX_GALAGA</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\FACADE_USFX_GALAGA\COMETA.h">
+      <Filter>Source\FACADE_USFX_GALAGA</Filter>
+    </ClInclude>
+    <None Include="..\..\Source\FACADE_USFX_GALAGA\FACADE_USFX_GALAGA.Build.cs">
+      <Filter>Source\FACADE_USFX_GALAGA</Filter>
+    </None>
+    <ClCompile Include="..\..\Source\FACADE_USFX_GALAGA\FACADE_USFX_GALAGA.cpp">
+      <Filter>Source\FACADE_USFX_GALAGA</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\FACADE_USFX_GALAGA\FACADE_USFX_GALAGA.h">
+      <Filter>Source\FACADE_USFX_GALAGA</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\FACADE_USFX_GALAGA\FACADE_USFX_GALAGAGameMode.cpp">
+      <Filter>Source\FACADE_USFX_GALAGA</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\FACADE_USFX_GALAGA\FACADE_USFX_GALAGAGameMode.h">
+      <Filter>Source\FACADE_USFX_GALAGA</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\FACADE_USFX_GALAGA\FACADE_USFX_GALAGAPawn.cpp">
+      <Filter>Source\FACADE_USFX_GALAGA</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\FACADE_USFX_GALAGA\FACADE_USFX_GALAGAPawn.h">
+      <Filter>Source\FACADE_USFX_GALAGA</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\FACADE_USFX_GALAGA\FACADE_USFX_GALAGAProjectile.cpp">
+      <Filter>Source\FACADE_USFX_GALAGA</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\FACADE_USFX_GALAGA\FACADE_USFX_GALAGAProjectile.h">
+      <Filter>Source\FACADE_USFX_GALAGA</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\FACADE_USFX_GALAGA\HUD_Dificultad.cpp">
+      <Filter>Source\FACADE_USFX_GALAGA</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\FACADE_USFX_GALAGA\HUD_Dificultad.h">
+      <Filter>Source\FACADE_USFX_GALAGA</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\FACADE_USFX_GALAGA\MainMenuWidget.cpp">
+      <Filter>Source\FACADE_USFX_GALAGA</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\FACADE_USFX_GALAGA\MainMenuWidget.h">
+      <Filter>Source\FACADE_USFX_GALAGA</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\FACADE_USFX_GALAGA\MenuHUD.cpp">
+      <Filter>Source\FACADE_USFX_GALAGA</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\FACADE_USFX_GALAGA\MenuHUD.h">
+      <Filter>Source\FACADE_USFX_GALAGA</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\FACADE_USFX_GALAGA\MenuPlayerController.cpp">
+      <Filter>Source\FACADE_USFX_GALAGA</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\FACADE_USFX_GALAGA\MenuPlayerController.h">
+      <Filter>Source\FACADE_USFX_GALAGA</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\FACADE_USFX_GALAGA\METEORO.cpp">
+      <Filter>Source\FACADE_USFX_GALAGA</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\FACADE_USFX_GALAGA\METEORO.h">
+      <Filter>Source\FACADE_USFX_GALAGA</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\FACADE_USFX_GALAGA\MINA_GALACTICA.cpp">
+      <Filter>Source\FACADE_USFX_GALAGA</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\FACADE_USFX_GALAGA\MINA_GALACTICA.h">
+      <Filter>Source\FACADE_USFX_GALAGA</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\FACADE_USFX_GALAGA\NAVE_ENEMIGA_01.cpp">
+      <Filter>Source\FACADE_USFX_GALAGA</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\FACADE_USFX_GALAGA\NAVE_ENEMIGA_01.h">
+      <Filter>Source\FACADE_USFX_GALAGA</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\FACADE_USFX_GALAGA\NAVE_ENEMIGA_02.cpp">
+      <Filter>Source\FACADE_USFX_GALAGA</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\FACADE_USFX_GALAGA\NAVE_ENEMIGA_02.h">
+      <Filter>Source\FACADE_USFX_GALAGA</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\FACADE_USFX_GALAGA\NAVE_ENEMIGA_03.cpp">
+      <Filter>Source\FACADE_USFX_GALAGA</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\FACADE_USFX_GALAGA\NAVE_ENEMIGA_03.h">
+      <Filter>Source\FACADE_USFX_GALAGA</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\FACADE_USFX_GALAGA\NAVE_ENEMIGA_04.cpp">
+      <Filter>Source\FACADE_USFX_GALAGA</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\FACADE_USFX_GALAGA\NAVE_ENEMIGA_04.h">
+      <Filter>Source\FACADE_USFX_GALAGA</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\FACADE_USFX_GALAGA\NAVE_ENEMIGA_05.cpp">
+      <Filter>Source\FACADE_USFX_GALAGA</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\FACADE_USFX_GALAGA\NAVE_ENEMIGA_05.h">
+      <Filter>Source\FACADE_USFX_GALAGA</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\FACADE_USFX_GALAGA\NAVE_ENEMIGA_P.cpp">
+      <Filter>Source\FACADE_USFX_GALAGA</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\FACADE_USFX_GALAGA\NAVE_ENEMIGA_P.h">
+      <Filter>Source\FACADE_USFX_GALAGA</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\FACADE_USFX_GALAGA\OBSTACULOS_ESPACIALES_P.cpp">
+      <Filter>Source\FACADE_USFX_GALAGA</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\FACADE_USFX_GALAGA\OBSTACULOS_ESPACIALES_P.h">
+      <Filter>Source\FACADE_USFX_GALAGA</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\FACADE_USFX_GALAGA\PROYECTIL_P.cpp">
+      <Filter>Source\FACADE_USFX_GALAGA</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\FACADE_USFX_GALAGA\PROYECTIL_P.h">
+      <Filter>Source\FACADE_USFX_GALAGA</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\FACADE_USFX_GALAGA\P_FM_FABRICA_CAPSULAS.cpp">
+      <Filter>Source\FACADE_USFX_GALAGA</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\FACADE_USFX_GALAGA\P_FM_FABRICA_CAPSULAS.h">
+      <Filter>Source\FACADE_USFX_GALAGA</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\FACADE_USFX_GALAGA\P_FM_FABRICA_GENERAL_P.cpp">
+      <Filter>Source\FACADE_USFX_GALAGA</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\FACADE_USFX_GALAGA\P_FM_FABRICA_GENERAL_P.h">
+      <Filter>Source\FACADE_USFX_GALAGA</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\FACADE_USFX_GALAGA\P_FM_FABRICA_NAVES_P.cpp">
+      <Filter>Source\FACADE_USFX_GALAGA</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\FACADE_USFX_GALAGA\P_FM_FABRICA_NAVES_P.h">
+      <Filter>Source\FACADE_USFX_GALAGA</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\FACADE_USFX_GALAGA\P_FM_FABRICA_OBSTACULOS.cpp">
+      <Filter>Source\FACADE_USFX_GALAGA</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\FACADE_USFX_GALAGA\P_FM_FABRICA_OBSTACULOS.h">
+      <Filter>Source\FACADE_USFX_GALAGA</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\FACADE_USFX_GALAGA\P_FM_FABRICA_OBSTACULOS_01.cpp">
+      <Filter>Source\FACADE_USFX_GALAGA</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\FACADE_USFX_GALAGA\P_FM_FABRICA_OBSTACULOS_01.h">
+      <Filter>Source\FACADE_USFX_GALAGA</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\FACADE_USFX_GALAGA\P_F_DIFICULTAD_FACADE.cpp">
+      <Filter>Source\FACADE_USFX_GALAGA</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\FACADE_USFX_GALAGA\P_F_DIFICULTAD_FACADE.h">
+      <Filter>Source\FACADE_USFX_GALAGA</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\FACADE_USFX_GALAGA\P_F_Nivel_Dificultad_CA.cpp">
+      <Filter>Source\FACADE_USFX_GALAGA</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\FACADE_USFX_GALAGA\P_F_Nivel_Dificultad_CA.h">
+      <Filter>Source\FACADE_USFX_GALAGA</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\FACADE_USFX_GALAGA\P_F_Nivel_Dificultad_DIFICIL_CH.cpp">
+      <Filter>Source\FACADE_USFX_GALAGA</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\FACADE_USFX_GALAGA\P_F_Nivel_Dificultad_DIFICIL_CH.h">
+      <Filter>Source\FACADE_USFX_GALAGA</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\FACADE_USFX_GALAGA\P_F_Nivel_Dificultad_FACIL_CH.cpp">
+      <Filter>Source\FACADE_USFX_GALAGA</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\FACADE_USFX_GALAGA\P_F_Nivel_Dificultad_FACIL_CH.h">
+      <Filter>Source\FACADE_USFX_GALAGA</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\FACADE_USFX_GALAGA\P_F_Nivel_Dificultad_NORMAL_CH.cpp">
+      <Filter>Source\FACADE_USFX_GALAGA</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\FACADE_USFX_GALAGA\P_F_Nivel_Dificultad_NORMAL_CH.h">
+      <Filter>Source\FACADE_USFX_GALAGA</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\FACADE_USFX_GALAGA\SATELITE.cpp">
+      <Filter>Source\FACADE_USFX_GALAGA</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\FACADE_USFX_GALAGA\SATELITE.h">
+      <Filter>Source\FACADE_USFX_GALAGA</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

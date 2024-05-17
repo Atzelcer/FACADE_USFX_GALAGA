@@ -1,0 +1,14 @@
+{
+	"Targets": [
+		{
+			"Name": "FACADE_USFX_GALAGA",
+			"Path": "D:\\UNREAL_ENGINGE_4.27\\FACADE_USFX_GALAGA\\Source\\FACADE_USFX_GALAGA.Target.cs",
+			"Type": "Game"
+		},
+		{
+			"Name": "FACADE_USFX_GALAGAEditor",
+			"Path": "D:\\UNREAL_ENGINGE_4.27\\FACADE_USFX_GALAGA\\Source\\FACADE_USFX_GALAGAEditor.Target.cs",
+			"Type": "Editor"
+		}
+	]
+}
