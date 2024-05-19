@@ -30,6 +30,7 @@ protected:
 	//METODO QUE NOS AYUDA A OBTENER LOS IDENTIFICADORES DE LAS NAVES PARA LUEGO LLEGAR A CREALAS A CADA UNO DE ESTAS
 	virtual ANAVE_ENEMIGA_P* Crear_Nave(FString Nave_Identificador) PURE_VIRTUAL(AP_FM_FABRICA_GENERAL_P::Crear_Nave, return nullptr;);
 
+
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;

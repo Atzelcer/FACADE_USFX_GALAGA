@@ -42,6 +42,7 @@ ASATELITE::ASATELITE()
 
 void ASATELITE::Tick(float DeltaTime)
 {
+	Super::Tick(DeltaTime);
 }
 
 void ASATELITE::Componente_Destruccion()

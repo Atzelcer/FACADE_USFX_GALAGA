@@ -42,6 +42,15 @@ public:
 	UPROPERTY(Category = Audio, EditAnywhere, BlueprintReadWrite)
 	class USoundBase* FireSound;
 
+	UPROPERTY(EditAnywhere, Category = "Colision")
+	class UCapsuleComponent* ShipCollision; // para colisiones
+
+	UPROPERTY(EditAnywhere, Category = "Particula de Explosion")
+	class UParticleSystem* ShipExplosion; // para la explosión
+
+	UPROPERTY(EditAnywhere, Category = "Audio_Explosion")
+	class USoundBase* ExplosionSoundShip;    // sonido de explosión
+
 	// Begin Actor Interface
 	virtual void Tick(float DeltaSeconds) override;
 	virtual void SetupPlayerInputComponent(class UInputComponent* InputComponent) override;
@@ -58,6 +67,15 @@ public:
 	static const FName MoveRightBinding;
 	static const FName FireForwardBinding;
 	static const FName FireRightBinding;
+
+
+public:
+
+	float Health_Nave_Protagonista;
+
+public:
+	/** Retorna la salud actual del Pawn */
+	float GetHealth() const { return Health_Nave_Protagonista; }
 
 private:
 
@@ -76,6 +94,8 @@ public:
 	FORCEINLINE class USpringArmComponent* GetCameraBoom() const { return CameraBoom; }
 
 
-	void Damege(float Danio_);
+	void Damage(float Danio_);
+
+	void Componentes_Colision();
 };
 

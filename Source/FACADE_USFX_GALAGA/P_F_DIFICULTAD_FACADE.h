@@ -37,28 +37,28 @@ public:
 	void ActivateDificilMode();
 
     // Parámetros de dificultad fácil
-    float VidaFacil = 100.0f;
-    float VelocidadFacil = 200.0f;
-    float DanioDisparoFacil = 10.0f;
-    float VidaObstaculosFacil = 50.0f;
-    float DanioObstaculosFacil = 5.0f;
-    float VelocidadObstaculosFacil = 100.0f;
+    float VidaFacil ;
+    float VelocidadFacil ;
+    float DanioDisparoFacil ;
+    float VidaObstaculosFacil ;
+    float DanioObstaculosFacil ;
+    float VelocidadObstaculosFacil ;
 
     // Parámetros de dificultad normal
-    float VidaNormal = 150.0f;
-    float VelocidadNormal = 250.0f;
-    float DanioDisparoNormal = 20.0f;
-    float VidaObstaculosNormal = 100.0f;
-    float DanioObstaculosNormal = 10.0f;
-    float VelocidadObstaculosNormal = 150.0f;
+    float VidaNormal ;
+    float VelocidadNormal ;
+    float DanioDisparoNormal ;
+    float VidaObstaculosNormal ;
+    float DanioObstaculosNormal ;
+    float VelocidadObstaculosNormal ;
 
     // Parámetros de dificultad difícil
-    float VidaDificil = 200.0f;
-    float VelocidadDificil = 300.0f;
-    float DanioDisparoDificil = 30.0f;
-    float VidaObstaculosDificil = 150.0f;
-    float DanioObstaculosDificil = 15.0f;
-    float VelocidadObstaculosDificil = 200.0f;
+    float VidaDificil ;
+    float VelocidadDificil ;
+    float DanioDisparoDificil ;
+    float VidaObstaculosDificil ;
+    float DanioObstaculosDificil ;
+    float VelocidadObstaculosDificil ;
 
 
 };

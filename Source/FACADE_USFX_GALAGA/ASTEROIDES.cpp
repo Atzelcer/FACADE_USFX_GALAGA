@@ -41,6 +41,7 @@ AASTEROIDES::AASTEROIDES()
 
 void AASTEROIDES::Tick(float DeltaTime)
 {
+	Super::Tick(DeltaTime);
 }
 
 void AASTEROIDES::NotifyActorBeginOverlap(AActor* OtherActor)
@@ -64,5 +65,5 @@ void AASTEROIDES::Componente_Destruccion()
 	UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), ParticulaColision, GetActorLocation());
 
 	// Destruir el asteroide
-	Destroy();
+	this->Destroy();
 }

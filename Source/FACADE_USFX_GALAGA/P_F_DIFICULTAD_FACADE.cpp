@@ -14,16 +14,43 @@ AP_F_DIFICULTAD_FACADE::AP_F_DIFICULTAD_FACADE()
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
+    VidaFacil = 100.0f;
+    VelocidadFacil = 40.0f;
+    DanioDisparoFacil = 20.0f;
+
+
+    VidaObstaculosFacil = 50.0f;
+    DanioObstaculosFacil = 15.0f;
+    VelocidadObstaculosFacil = 100.0f;
+
+    VidaNormal = 350.0f;
+    VelocidadNormal = 80.0f;
+    DanioDisparoNormal = 50.0f;
+
+
+    VidaObstaculosNormal = 100.0f;
+    DanioObstaculosNormal = 30.0f;
+    VelocidadObstaculosNormal = 150.0f;
+
+    VidaDificil = 500.0f;
+    VelocidadDificil = 150.0f;
+    DanioDisparoDificil = 100.0f;
+
+
+    VidaObstaculosDificil = 150.0f;
+    DanioObstaculosDificil = 75.0f;
+    VelocidadObstaculosDificil = 200.0f;
+
 }
 
 // Called when the game starts or when spawned
 void AP_F_DIFICULTAD_FACADE::BeginPlay()
 {
 	Super::BeginPlay();
-	// Inicializar o buscar instancias de las clases de dificultad
-	NivelFacil = GetWorld()->SpawnActor<AP_F_Nivel_Dificultad_FACIL_CH>();
-	NivelNormal = GetWorld()->SpawnActor<AP_F_Nivel_Dificultad_NORMAL_CH>();
-	NivelDificil = GetWorld()->SpawnActor<AP_F_Nivel_Dificultad_DIFICIL_CH>();
+	//// Inicializar o buscar instancias de las clases de dificultad
+	//NivelFacil = GetWorld()->SpawnActor<AP_F_Nivel_Dificultad_FACIL_CH>();
+	//NivelNormal = GetWorld()->SpawnActor<AP_F_Nivel_Dificultad_NORMAL_CH>();
+	//NivelDificil = GetWorld()->SpawnActor<AP_F_Nivel_Dificultad_DIFICIL_CH>();
 }
 
 // Called every frame
@@ -35,87 +62,30 @@ void AP_F_DIFICULTAD_FACADE::Tick(float DeltaTime)
 
 void AP_F_DIFICULTAD_FACADE::ActivateFacilMode()
 {
-    // Asegurarse de que las instancias de otros niveles estén desactivadas o destruidas
-    if (NivelNormal)
-    {
-        NivelNormal->Destroy();
-        NivelNormal = nullptr;
-    }
-    if (NivelDificil)
-    {
-        NivelDificil->Destroy();
-        NivelDificil = nullptr;
-    }
-
     // Asegurarse de que la instancia del nivel fácil está activa
-    if (!NivelFacil)
-    {
+    if (!NivelFacil) {
         NivelFacil = GetWorld()->SpawnActor<AP_F_Nivel_Dificultad_FACIL_CH>();
     }
 
     // Configurar directamente cada aspecto de las naves y obstáculos
-    NivelFacil->Configurar_Vida_Naves(VidaFacil);
-    NivelFacil->Configurar_Velocidad_Naves(VelocidadFacil);
-    NivelFacil->Configurar_Danio_Disparo_Naves(DanioDisparoFacil);
-    NivelFacil->Configurar_Vida_Obstaculos(VidaObstaculosFacil);
-    NivelFacil->Configurar_Danio_Obstaculos(DanioObstaculosFacil);
-    NivelFacil->Configurar_Velocidad_Obstaculos(VelocidadObstaculosFacil);
+    NivelFacil->ConfigurarTodo(VidaFacil, VelocidadFacil, DanioDisparoFacil, VidaObstaculosFacil, DanioObstaculosFacil, VelocidadObstaculosFacil);
 }
 
 void AP_F_DIFICULTAD_FACADE::ActivateNormalMode()
 {
-    // Destruir instancias de otros niveles
-    if (NivelFacil)
-    {
-        NivelFacil->Destroy();
-        NivelFacil = nullptr;
-    }
-    if (NivelDificil)
-    {
-        NivelDificil->Destroy();
-        NivelDificil = nullptr;
-    }
-
-    // Asegurarse de que la instancia del nivel normal está activa
-    if (!NivelNormal)
-    {
+    if (!NivelNormal) {
         NivelNormal = GetWorld()->SpawnActor<AP_F_Nivel_Dificultad_NORMAL_CH>();
     }
-    NivelNormal->Configurar_Vida_Naves(VidaNormal);
-    NivelNormal->Configurar_Velocidad_Naves(VelocidadNormal);
-    NivelNormal->Configurar_Danio_Disparo_Naves(DanioDisparoNormal);
-    NivelNormal->Configurar_Vida_Obstaculos(VidaObstaculosNormal);
-    NivelNormal->Configurar_Danio_Obstaculos(DanioObstaculosNormal);
-    NivelNormal->Configurar_Velocidad_Obstaculos(VelocidadObstaculosNormal);
 
+    NivelNormal->ConfigurarTodo(VidaNormal, VelocidadNormal, DanioDisparoNormal, VidaObstaculosNormal, DanioObstaculosNormal, VelocidadObstaculosNormal);
 }
 
 
 void AP_F_DIFICULTAD_FACADE::ActivateDificilMode()
 {
-    // Destruir instancias de otros niveles
-    if (NivelFacil)
-    {
-        NivelFacil->Destroy();
-        NivelFacil = nullptr;
-    }
-    if (NivelNormal)
-    {
-        NivelNormal->Destroy();
-        NivelNormal = nullptr;
-    }
-
-    // Asegurarse de que la instancia del nivel difícil está activa
-    if (!NivelDificil)
-    {
+    if (!NivelDificil) {
         NivelDificil = GetWorld()->SpawnActor<AP_F_Nivel_Dificultad_DIFICIL_CH>();
     }
 
-    NivelDificil->Configurar_Vida_Naves(VidaDificil);
-    NivelDificil->Configurar_Velocidad_Naves(VelocidadDificil);
-    NivelDificil->Configurar_Danio_Disparo_Naves(DanioDisparoDificil);
-    NivelDificil->Configurar_Vida_Obstaculos(VidaObstaculosDificil);
-    NivelDificil->Configurar_Danio_Obstaculos(DanioObstaculosDificil);
-    NivelDificil->Configurar_Velocidad_Obstaculos(VelocidadObstaculosDificil);
+    NivelDificil->ConfigurarTodo(VidaDificil, VelocidadDificil, DanioDisparoDificil, VidaObstaculosDificil, DanioObstaculosDificil, VelocidadObstaculosDificil);
 }
-

@@ -17,12 +17,14 @@ public:
 	AP_FM_FABRICA_OBSTACULOS();
 
 protected:
+
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
 	AOBSTACULOS_ESPACIALES_P* Get_Nave(FString Identificador);
 
 public:	
+
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 

@@ -20,8 +20,8 @@ void AP_FM_FABRICA_OBSTACULOS::BeginPlay()
 
 AOBSTACULOS_ESPACIALES_P* AP_FM_FABRICA_OBSTACULOS::Get_Nave(FString Identificador)
 {
-
-	return nullptr;
+	AOBSTACULOS_ESPACIALES_P* Obstaculo = Crear_Obstaculos(Identificador);
+	return Obstaculo;
 }
 
 // Called every frame

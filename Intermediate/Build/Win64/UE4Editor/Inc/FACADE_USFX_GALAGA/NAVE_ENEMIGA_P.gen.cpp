@@ -140,7 +140,7 @@ void EmptyLinkFunctionForGeneratedCodeNAVE_ENEMIGA_P() {}
 		0,
 		UE_ARRAY_COUNT(Z_Construct_UClass_ANAVE_ENEMIGA_P_Statics::PropPointers),
 		0,
-		0x009000A5u,
+		0x009000A4u,
 		METADATA_PARAMS(Z_Construct_UClass_ANAVE_ENEMIGA_P_Statics::Class_MetaDataParams, UE_ARRAY_COUNT(Z_Construct_UClass_ANAVE_ENEMIGA_P_Statics::Class_MetaDataParams))
 	};
 	UClass* Z_Construct_UClass_ANAVE_ENEMIGA_P()
@@ -152,7 +152,7 @@ void EmptyLinkFunctionForGeneratedCodeNAVE_ENEMIGA_P() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(ANAVE_ENEMIGA_P, 282498208);
+	IMPLEMENT_CLASS(ANAVE_ENEMIGA_P, 3107698491);
 	template<> FACADE_USFX_GALAGA_API UClass* StaticClass<ANAVE_ENEMIGA_P>()
 	{
 		return ANAVE_ENEMIGA_P::StaticClass();

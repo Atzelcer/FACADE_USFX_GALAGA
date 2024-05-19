@@ -3,7 +3,7 @@
   <ItemGroup>
     <None Include="..\..\FACADE_USFX_GALAGA.uproject" />
     <Filter Include="Source">
-      <UniqueIdentifier>{8BA2E672-61A7-4F71-ADEC-8989161E4428}</UniqueIdentifier>
+      <UniqueIdentifier>{A1095A48-5FC0-4BFF-8F5F-BB37174A88D2}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Source\FACADE_USFX_GALAGA.Target.cs">
       <Filter>Source</Filter>
@@ -11,8 +11,10 @@
     <None Include="..\..\Source\FACADE_USFX_GALAGAEditor.Target.cs">
       <Filter>Source</Filter>
     </None>
+    <None Include="..\..\.gitattributes" />
+    <None Include="..\..\.gitignore" />
     <Filter Include="Config">
-      <UniqueIdentifier>{196E1CB7-5D3A-495C-85FD-1832906770E1}</UniqueIdentifier>
+      <UniqueIdentifier>{B540E2F8-5F4B-411B-A4E7-6482F0E4472A}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Config\DefaultEditor.ini">
       <Filter>Config</Filter>
@@ -30,7 +32,7 @@
       <Filter>Config</Filter>
     </None>
     <Filter Include="Source\FACADE_USFX_GALAGA">
-      <UniqueIdentifier>{2A45CCAE-C99F-46D1-88E6-ED5905FD6F4E}</UniqueIdentifier>
+      <UniqueIdentifier>{0C1C4970-FC19-4B9A-A89B-7338F2DF8FC0}</UniqueIdentifier>
     </Filter>
     <ClCompile Include="..\..\Source\FACADE_USFX_GALAGA\ASTEROIDES.cpp">
       <Filter>Source\FACADE_USFX_GALAGA</Filter>
@@ -225,6 +227,12 @@
       <Filter>Source\FACADE_USFX_GALAGA</Filter>
     </ClCompile>
     <ClInclude Include="..\..\Source\FACADE_USFX_GALAGA\SATELITE.h">
+      <Filter>Source\FACADE_USFX_GALAGA</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\FACADE_USFX_GALAGA\SLiteBarWidget.cpp">
+      <Filter>Source\FACADE_USFX_GALAGA</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\FACADE_USFX_GALAGA\SLiteBarWidget.h">
       <Filter>Source\FACADE_USFX_GALAGA</Filter>
     </ClInclude>
   </ItemGroup>

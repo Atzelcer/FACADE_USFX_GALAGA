@@ -14,7 +14,7 @@
 
 ANAVE_ENEMIGA_01::ANAVE_ENEMIGA_01()
 {
-	PrimaryActorTick.bCanEverTick = true;
+	//PrimaryActorTick.bCanEverTick = true;
 
 
 	//|*| COMPONENTE MALLA DE LA NAVE |*|
@@ -22,10 +22,9 @@ ANAVE_ENEMIGA_01::ANAVE_ENEMIGA_01()
 	if (MeshAsset.Succeeded())
 	{
 		Nave_Mesh->SetStaticMesh(MeshAsset.Object);
-
-		//// Modificar la escala del componente de malla
-		//FVector NewScale(0.500f, 0.500f, 0.500f); // Escala modificada
-		//Nave_Mesh->SetWorldScale3D(NewScale);
+		// Modificar la escala del componente de malla
+		FVector NewScale(1.5f, 1.5f, 1.5f); // Escala modificada
+		Nave_Mesh->SetWorldScale3D(NewScale);
 	}
 
 	//|*| COMPONENTE DE PARTICULA DE LA NAVE |*|
@@ -43,9 +42,8 @@ ANAVE_ENEMIGA_01::ANAVE_ENEMIGA_01()
 		Sonido_Nave = Cast<USoundBase>(AssetExplosionSound.Object);
 	}
 
-
 	//|*| PARA AJUSTAR LOS LIMITES DE COLISION DE LA NAVE |*|
-	Colision_Nave->SetBoxExtent(FVector(50.f, 50.f, 50.f));
+	Colision_Nave->SetBoxExtent(FVector(80.f, 80.f, 80.f));
 
 	//|*| INICIALIZANDO LOS ATRIBUTOS DE LA NAVE |*|
 
@@ -67,25 +65,50 @@ void ANAVE_ENEMIGA_01::NotifyActorBeginOverlap(AActor* OtherActor)
 
 	if (Jugador)
 	{
-		Componente_Destruccion();
+		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("[NAVE_ENEMIGA_01]   Colision con el jugador"));
+
+		Jugador->Damage(50.f);
+
+		Recibir_Danio(50.f);
 	}
 
 }
 
-void ANAVE_ENEMIGA_01::Componente_Destruccion()
-{
-	UGameplayStatics::PlaySoundAtLocation(GetWorld(), Sonido_Nave, GetActorLocation());
-	UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), Explosion_Nave, GetActorLocation());
-	Destroy();
-
-}
 
 void ANAVE_ENEMIGA_01::Recibir_Danio(float Danio)
 {
 	Life -= Danio;
+}
+
+
+void ANAVE_ENEMIGA_01::Tick(float DeltaTime)
+{
+	Super::Tick(DeltaTime);
+
+	GEngine->AddOnScreenDebugMessage(-1, 0.f, FColor::Yellow, FString::Printf(TEXT("[Nave_Enemiga_01]  Vida de la nave: %f"), Life));
 
 	if (Life <= 0)
 	{
 		Componente_Destruccion();
 	}
+}
+
+void ANAVE_ENEMIGA_01::BeginPlay()
+{
+	Super::BeginPlay();
+
+
+}
+
+void ANAVE_ENEMIGA_01::Componente_Destruccion()
+{
+	// Reproducir el sonido de la colisión
+	UGameplayStatics::PlaySoundAtLocation(GetWorld(), Sonido_Nave, GetActorLocation());
+
+	// Reproducir la partícula de la colisión
+	UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), Explosion_Nave, GetActorLocation());
+
+	// Destruir el asteroide
+	this->Destroy();
+
 }

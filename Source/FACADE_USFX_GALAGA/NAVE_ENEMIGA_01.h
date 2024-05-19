@@ -24,6 +24,12 @@ public:
 
 	virtual void Recibir_Danio(float Danio) override;
 
+public:
+
+	virtual void Tick(float DeltaTime) override;
+
+	virtual void BeginPlay() override;
+
 
 	
 };

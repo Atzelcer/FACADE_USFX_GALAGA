@@ -23,9 +23,9 @@ ANAVE_ENEMIGA_02::ANAVE_ENEMIGA_02()
 	{
 		Nave_Mesh->SetStaticMesh(MeshAsset.Object);
 
-		//// Modificar la escala del componente de malla
-		//FVector NewScale(0.500f, 0.500f, 0.500f); // Escala modificada
-		//Nave_Mesh->SetWorldScale3D(NewScale);
+		// Modificar la escala del componente de malla
+		FVector NewScale(1.5f, 1.5f, 1.5f); // Escala modificada
+		Nave_Mesh->SetWorldScale3D(NewScale);
 	}
 
 	//|*| COMPONENTE DE PARTICULA DE LA NAVE |*|
@@ -45,7 +45,7 @@ ANAVE_ENEMIGA_02::ANAVE_ENEMIGA_02()
 
 
 	//|*| PARA AJUSTAR LOS LIMITES DE COLISION DE LA NAVE |*|
-	Colision_Nave->SetBoxExtent(FVector(50.f, 50.f, 50.f));
+	Colision_Nave->SetBoxExtent(FVector(80.f, 80.f, 80.f));
 
 	//|*| INICIALIZANDO LOS ATRIBUTOS DE LA NAVE |*|
 
@@ -59,6 +59,31 @@ ANAVE_ENEMIGA_02::ANAVE_ENEMIGA_02()
 	Identificador_Nave = "Nave_Enemiga_02";
 }
 
+void ANAVE_ENEMIGA_02::BeginPlay()
+{
+	Super::BeginPlay();
+}
+
+
+void ANAVE_ENEMIGA_02::Tick(float DeltaTime)
+{
+	Super::Tick(DeltaTime);
+
+	GEngine->AddOnScreenDebugMessage(-1, 0.f, FColor::Yellow, FString::Printf(TEXT("[Nave_Enemiga_02]  Vida de la nave: %f"), Life));
+
+	if (Life <= 0) 
+	{
+		Componente_Destruccion();
+
+	}
+}
+
+void ANAVE_ENEMIGA_02::Recibir_Danio(float Danio)
+{
+	Life -= Danio;
+}
+
+
 void ANAVE_ENEMIGA_02::NotifyActorBeginOverlap(AActor* OtherActor)
 {
 	Super::NotifyActorBeginOverlap(OtherActor);
@@ -67,32 +92,25 @@ void ANAVE_ENEMIGA_02::NotifyActorBeginOverlap(AActor* OtherActor)
 
 	if (Jugador)
 	{
-		Componente_Destruccion();
+		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("[NAVE_ENEMIGA_02]   Colision con el jugador"));
+
+		Jugador->Damage(50.f);
+
+		Recibir_Danio(50.f);
 	}
 
 }
+
 
 void ANAVE_ENEMIGA_02::Componente_Destruccion()
 {
-	// Reproducir el sonido de la nave
+	// Reproducir el sonido de la colisión
 	UGameplayStatics::PlaySoundAtLocation(GetWorld(), Sonido_Nave, GetActorLocation());
 
-	// Crear una explosion en la nave
+	// Reproducir la partícula de la colisión
 	UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), Explosion_Nave, GetActorLocation());
 
-	// Destruir la nave
-	Destroy();
+	// Destruir el asteroide
+	this->Destroy();
 }
 
-void ANAVE_ENEMIGA_02::Recibir_Danio(float Danio)
-{
-	// Restar la vida de la nave
-	Life -= Danio;
-
-	// Si la vida de la nave es menor o igual a 0
-	if (Life <= 0)
-	{
-		// Destruir la nave
-		Componente_Destruccion();
-	}
-}

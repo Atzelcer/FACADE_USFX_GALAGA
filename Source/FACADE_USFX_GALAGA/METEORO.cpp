@@ -42,6 +42,7 @@ AMETEORO::AMETEORO()
 
 void AMETEORO::Tick(float DeltaTime)
 {
+	Super::Tick(DeltaTime);
 }
 
 void AMETEORO::NotifyActorBeginOverlap(AActor* OtherActor)

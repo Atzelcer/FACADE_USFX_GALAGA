@@ -1,6 +1,5 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-
 #include "P_F_Nivel_Dificultad_NORMAL_CH.h"
 #include "NAVE_ENEMIGA_P.h"
 #include "OBSTACULOS_ESPACIALES_P.h"
@@ -13,116 +12,185 @@ AP_F_Nivel_Dificultad_NORMAL_CH::AP_F_Nivel_Dificultad_NORMAL_CH()
 	PrimaryActorTick.bCanEverTick = true;
 }
 
+
+
 void AP_F_Nivel_Dificultad_NORMAL_CH::BeginPlay()
 {
 	Super::BeginPlay();
-	// Instanciar las fábricas
-	FABRICA_NAVES_B = NewObject<AP_FM_FABRICA_NAVES_P>();
-	FABRICA_OBSTACULOS_B = NewObject<AP_FM_FABRICA_OBSTACULOS_01>();
 
-	// Inicializar temporizadores
+	// Instanciar las fábricas
+	FABRICA_NAVES_B = GetWorld()->SpawnActor<AP_FM_FABRICA_NAVES_P>(AP_FM_FABRICA_NAVES_P::StaticClass());
+	FABRICA_OBSTACULOS_B = GetWorld()->SpawnActor<AP_FM_FABRICA_OBSTACULOS_01>(AP_FM_FABRICA_OBSTACULOS_01::StaticClass());
+
 	TiempoDesdeUltimaNave = 0.0f;
+	IntervaloNave = 3.0f;
 	TiempoDesdeUltimoObstaculo = 0.0f;
-	IntervaloNave = 3.0f;  // Intervalo más corto para más desafío
-	IntervaloObstaculo = 8.0f;  // Obstáculos menos frecuentes que las naves
+	IntervaloObstaculo = 5.0f;
 }
+
+
 
 void AP_F_Nivel_Dificultad_NORMAL_CH::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	// Generación de naves basada en intervalos
 	TiempoDesdeUltimaNave += DeltaTime;
 	if (TiempoDesdeUltimaNave >= IntervaloNave) {
 		TiempoDesdeUltimaNave = 0.0f;
-		// Generar diferentes tipos de naves
-		NAVE_ENEMIGA_B = FABRICA_NAVES_B ->Crear_Nave(FString::Printf(TEXT("Nave_Enemiga_%d"), FMath::RandRange(1, 5)));
+		GenerarYConfigurarNave();
 	}
 
-	// Generación de obstáculos basada en intervalos
 	TiempoDesdeUltimoObstaculo += DeltaTime;
 	if (TiempoDesdeUltimoObstaculo >= IntervaloObstaculo) {
 		TiempoDesdeUltimoObstaculo = 0.0f;
-		// Generar uno de los tres tipos de obstáculos al azar
-		FString TipoObstaculo;
-		switch (FMath::RandRange(1, 3)) {
-		case 1: TipoObstaculo = TEXT("Asteroide"); break;
-		case 2: TipoObstaculo = TEXT("Cometa"); break;
-		case 3: TipoObstaculo = TEXT("Mina_Galactica"); break;
-		}
-		OBSTACULOS_ESPACIALES_B = FABRICA_OBSTACULOS_B->Crear_Obstaculos(TipoObstaculo);
+		GenerarYConfigurarObstaculo();
 	}
-
 }
 
-void AP_F_Nivel_Dificultad_NORMAL_CH::Configurar_Vida_Naves(float Vida)
+FString AP_F_Nivel_Dificultad_NORMAL_CH::SeleccionarTipoDeNave() const
 {
-	if (NAVE_ENEMIGA_B != nullptr) 
-	{	
-		NAVE_ENEMIGA_B->Set_Velocidad_Nave(Vida);
+	int Tipo = FMath::RandRange(1, 3); // Selección aleatoria de tipo de nave
+	switch (Tipo) {
+	case 1: return TEXT("Nave_Enemiga_01");
+	case 2: return TEXT("Nave_Enemiga_02");
+	case 3: return TEXT("Nave_Enemiga_03");
+	default: return TEXT("Nave_Enemiga_01");
+	}
+}
+
+FString AP_F_Nivel_Dificultad_NORMAL_CH::SeleccionarTipoDeObstaculo() const
+{
+	int Tipo = FMath::RandRange(1, 3); // Selección aleatoria de tipo de obstáculo
+	switch (Tipo) {
+	case 1: return TEXT("Asteroide");
+	case 2: return TEXT("Cometa");
+	case 3: return TEXT("Mina_Galactica");
+	default: return TEXT("Asteroide");
+	}
+}
+
+
+
+ANAVE_ENEMIGA_P* AP_F_Nivel_Dificultad_NORMAL_CH::GenerarYConfigurarNave()
+{
+	ANAVE_ENEMIGA_P* NuevaNave = FABRICA_NAVES_B->Crear_Nave(SeleccionarTipoDeNave());
+	if (NuevaNave) {
+		Configurar_Vida_Naves(NuevaNave, CurrentVidaNaves);
+		Configurar_Velocidad_Naves(NuevaNave, CurrentVelocidadNaves);
+		Configurar_Danio_Disparo_Naves(NuevaNave, CurrentDanioDisparoNaves);
+	}
+	return NuevaNave;
+}
+
+
+
+AOBSTACULOS_ESPACIALES_P* AP_F_Nivel_Dificultad_NORMAL_CH::GenerarYConfigurarObstaculo()
+{
+	AOBSTACULOS_ESPACIALES_P* NuevoObstaculo = FABRICA_OBSTACULOS_B->Crear_Obstaculos(SeleccionarTipoDeObstaculo());
+	if (NuevoObstaculo) {
+		Configurar_Vida_Obstaculos(NuevoObstaculo, CurrentVidaObstaculos);
+		Configurar_Danio_Obstaculos(NuevoObstaculo, CurrentDanioObstaculos);
+		Configurar_Velocidad_Obstaculos(NuevoObstaculo, CurrentVelocidadObstaculos);
+	}
+	return NuevoObstaculo;
+}
+
+
+void AP_F_Nivel_Dificultad_NORMAL_CH::ConfigurarTodo(float VidaNaves, float VelocidadNaves, float DanioDisparoNaves, float VidaObstaculos, float DanioObstaculos, float VelocidadObstaculos)
+{
+	CurrentVidaNaves = VidaNaves;
+	CurrentVelocidadNaves = VelocidadNaves;
+	CurrentDanioDisparoNaves = DanioDisparoNaves;
+
+
+	CurrentVidaObstaculos = VidaObstaculos;
+	CurrentDanioObstaculos = DanioObstaculos;
+	CurrentVelocidadObstaculos = VelocidadObstaculos;
+}
+
+
+
+
+
+void AP_F_Nivel_Dificultad_NORMAL_CH::Configurar_Vida_Naves(ANAVE_ENEMIGA_P* Nave, float Vida)
+{
+	if (Nave) {
+
+		Nave->Set_Vida(Vida);
 	}
 	else
 	{
-		GEngine->AddOnScreenDebugMessage(-1, 0.f, FColor::Magenta, TEXT("No se ha mando la vida de la nave"));
+		GEngine->AddOnScreenDebugMessage(-1, 0.f, FColor::Red, TEXT("No se paso la vida de la nave "));
 	}
 }
 
-void AP_F_Nivel_Dificultad_NORMAL_CH::Configurar_Velocidad_Naves(float Velocidad)
+
+
+void AP_F_Nivel_Dificultad_NORMAL_CH::Configurar_Velocidad_Naves(ANAVE_ENEMIGA_P* Nave, float Velocidad)
 {
-	if (NAVE_ENEMIGA_B != nullptr)
-	{
-		NAVE_ENEMIGA_B->Set_Velocidad_Nave(Velocidad);
+	if (Nave) {
+		Nave->Set_Velocidad_Nave(Velocidad);
 	}
 	else
 	{
-		GEngine->AddOnScreenDebugMessage(-1, 0.f, FColor::Magenta, TEXT("No se ha mando la velocidad de la nave"));
+		GEngine->AddOnScreenDebugMessage(-1, 0.f, FColor::Red, TEXT("No se paso la velocidad de la nave "));
 	}
 }
 
-void AP_F_Nivel_Dificultad_NORMAL_CH::Configurar_Danio_Disparo_Naves(float Danio_Disparo)
-{
-	if (NAVE_ENEMIGA_B != nullptr)
-	{
-		NAVE_ENEMIGA_B->Set_Danio_Disparo(Danio_Disparo);
-	}
-	else 
-	{
-		GEngine->AddOnScreenDebugMessage(-1, 0.f, FColor::Magenta, TEXT("No se ha mando el danio de disparo de la nave"));
-	}
-}
 
-void AP_F_Nivel_Dificultad_NORMAL_CH::Configurar_Vida_Obstaculos(float Vida)
+
+void AP_F_Nivel_Dificultad_NORMAL_CH::Configurar_Danio_Disparo_Naves(ANAVE_ENEMIGA_P* Nave, float Danio_Disparo)
 {
-	if (OBSTACULOS_ESPACIALES_B != nullptr) 
+	if (Nave) 
 	{
-		OBSTACULOS_ESPACIALES_B->Set_Vida_Obstaculos(Vida);
+		Nave->Set_Danio_Disparo(Danio_Disparo);
+
 	}
 	else
 	{
-		GEngine->AddOnScreenDebugMessage(-1, 0.f, FColor::Magenta, TEXT("No se mando la vida del obstaculo"));
+		GEngine->AddOnScreenDebugMessage(-1, 0.f, FColor::Red, TEXT("No se paso el danio de la nave "));
 	}
 }
 
-void AP_F_Nivel_Dificultad_NORMAL_CH::Configurar_Danio_Obstaculos(float Velocidad)
+
+
+void AP_F_Nivel_Dificultad_NORMAL_CH::Configurar_Vida_Obstaculos(AOBSTACULOS_ESPACIALES_P* Obstaculo, float Vida)
 {
-	if (OBSTACULOS_ESPACIALES_B != nullptr)
-	{
-		OBSTACULOS_ESPACIALES_B->Set_Velocidad_Obstaculos(Velocidad);
+	if (Obstaculo) {
+		Obstaculo->Set_Vida_Obstaculos(Vida);
 	}
 	else
 	{
-		GEngine->AddOnScreenDebugMessage(-1, 0.f, FColor::Magenta, TEXT("No se mando la velocidad del obstaculo"));
+		GEngine->AddOnScreenDebugMessage(-1, 0.f, FColor::Red, TEXT("No se paso la vida del obstaculo "));
 	}
 }
 
-void AP_F_Nivel_Dificultad_NORMAL_CH::Configurar_Velocidad_Obstaculos(float Danio)
+
+
+void AP_F_Nivel_Dificultad_NORMAL_CH::Configurar_Danio_Obstaculos(AOBSTACULOS_ESPACIALES_P* Obstaculo, float Danio)
 {
-	if (OBSTACULOS_ESPACIALES_B != nullptr)
+	if (Obstaculo) 
 	{
-		OBSTACULOS_ESPACIALES_B->Set_Danio_Obstaculos(Danio);
+		Obstaculo->Set_Danio_Obstaculos(Danio);
 	}
 	else
 	{
-		GEngine->AddOnScreenDebugMessage(-1, 0.f, FColor::Magenta, TEXT("No se mando el danio del obstaculo"));
+		GEngine->AddOnScreenDebugMessage(-1, 0.f, FColor::Red, TEXT("No se paso el danio del obstaculo "));
+
 	}
 }
+
+
+
+void AP_F_Nivel_Dificultad_NORMAL_CH::Configurar_Velocidad_Obstaculos(AOBSTACULOS_ESPACIALES_P* Obstaculo, float Velocidad)
+{
+	if (Obstaculo) {
+		Obstaculo->Set_Velocidad_Obstaculos(Velocidad);
+	}
+	else
+	{
+		GEngine->AddOnScreenDebugMessage(-1, 0.f, FColor::Red, TEXT("No se paso la velocidad del obstaculo "));
+	}
+}
+
+

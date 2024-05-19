@@ -23,5 +23,9 @@ public:
 	virtual void Componente_Destruccion() override;
 
 	virtual void Recibir_Danio(float Danio) override;
+
+	virtual void Tick(float DeltaTime) override;
+
+	virtual void BeginPlay() override;
 	
 };

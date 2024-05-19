@@ -22,6 +22,8 @@ void EmptyLinkFunctionForGeneratedCodeFACADE_USFX_GALAGAPawn() {}
 	ENGINE_API UClass* Z_Construct_UClass_USpringArmComponent_NoRegister();
 	COREUOBJECT_API UScriptStruct* Z_Construct_UScriptStruct_FVector();
 	ENGINE_API UClass* Z_Construct_UClass_USoundBase_NoRegister();
+	ENGINE_API UClass* Z_Construct_UClass_UCapsuleComponent_NoRegister();
+	ENGINE_API UClass* Z_Construct_UClass_UParticleSystem_NoRegister();
 // End Cross Module References
 	void AFACADE_USFX_GALAGAPawn::StaticRegisterNativesAFACADE_USFX_GALAGAPawn()
 	{
@@ -64,6 +66,18 @@ void EmptyLinkFunctionForGeneratedCodeFACADE_USFX_GALAGAPawn() {}
 		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_FireSound_MetaData[];
 #endif
 		static const UE4CodeGen_Private::FObjectPropertyParams NewProp_FireSound;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_ShipCollision_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FObjectPropertyParams NewProp_ShipCollision;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_ShipExplosion_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FObjectPropertyParams NewProp_ShipExplosion;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_ExplosionSoundShip_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FObjectPropertyParams NewProp_ExplosionSoundShip;
 		static const UE4CodeGen_Private::FPropertyParamsBase* const PropPointers[];
 		static const FCppClassTypeInfoStatic StaticCppClassTypeInfo;
 		static const UE4CodeGen_Private::FClassParams ClassParams;
@@ -150,6 +164,32 @@ void EmptyLinkFunctionForGeneratedCodeFACADE_USFX_GALAGAPawn() {}
 	};
 #endif
 	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AFACADE_USFX_GALAGAPawn_Statics::NewProp_FireSound = { "FireSound", nullptr, (EPropertyFlags)0x0010000000000005, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AFACADE_USFX_GALAGAPawn, FireSound), Z_Construct_UClass_USoundBase_NoRegister, METADATA_PARAMS(Z_Construct_UClass_AFACADE_USFX_GALAGAPawn_Statics::NewProp_FireSound_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AFACADE_USFX_GALAGAPawn_Statics::NewProp_FireSound_MetaData)) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AFACADE_USFX_GALAGAPawn_Statics::NewProp_ShipCollision_MetaData[] = {
+		{ "Category", "Colision" },
+		{ "EditInline", "true" },
+		{ "ModuleRelativePath", "FACADE_USFX_GALAGAPawn.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AFACADE_USFX_GALAGAPawn_Statics::NewProp_ShipCollision = { "ShipCollision", nullptr, (EPropertyFlags)0x0010000000080009, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AFACADE_USFX_GALAGAPawn, ShipCollision), Z_Construct_UClass_UCapsuleComponent_NoRegister, METADATA_PARAMS(Z_Construct_UClass_AFACADE_USFX_GALAGAPawn_Statics::NewProp_ShipCollision_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AFACADE_USFX_GALAGAPawn_Statics::NewProp_ShipCollision_MetaData)) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AFACADE_USFX_GALAGAPawn_Statics::NewProp_ShipExplosion_MetaData[] = {
+		{ "Category", "Particula de Explosion" },
+		{ "Comment", "// para colisiones\n" },
+		{ "ModuleRelativePath", "FACADE_USFX_GALAGAPawn.h" },
+		{ "ToolTip", "para colisiones" },
+	};
+#endif
+	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AFACADE_USFX_GALAGAPawn_Statics::NewProp_ShipExplosion = { "ShipExplosion", nullptr, (EPropertyFlags)0x0010000000000001, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AFACADE_USFX_GALAGAPawn, ShipExplosion), Z_Construct_UClass_UParticleSystem_NoRegister, METADATA_PARAMS(Z_Construct_UClass_AFACADE_USFX_GALAGAPawn_Statics::NewProp_ShipExplosion_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AFACADE_USFX_GALAGAPawn_Statics::NewProp_ShipExplosion_MetaData)) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AFACADE_USFX_GALAGAPawn_Statics::NewProp_ExplosionSoundShip_MetaData[] = {
+		{ "Category", "Audio_Explosion" },
+		{ "Comment", "// para la explosi?n\n" },
+		{ "ModuleRelativePath", "FACADE_USFX_GALAGAPawn.h" },
+		{ "ToolTip", "para la explosi?n" },
+	};
+#endif
+	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AFACADE_USFX_GALAGAPawn_Statics::NewProp_ExplosionSoundShip = { "ExplosionSoundShip", nullptr, (EPropertyFlags)0x0010000000000001, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AFACADE_USFX_GALAGAPawn, ExplosionSoundShip), Z_Construct_UClass_USoundBase_NoRegister, METADATA_PARAMS(Z_Construct_UClass_AFACADE_USFX_GALAGAPawn_Statics::NewProp_ExplosionSoundShip_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AFACADE_USFX_GALAGAPawn_Statics::NewProp_ExplosionSoundShip_MetaData)) };
 	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_AFACADE_USFX_GALAGAPawn_Statics::PropPointers[] = {
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AFACADE_USFX_GALAGAPawn_Statics::NewProp_ShipMeshComponent,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AFACADE_USFX_GALAGAPawn_Statics::NewProp_CameraComponent,
@@ -158,6 +198,9 @@ void EmptyLinkFunctionForGeneratedCodeFACADE_USFX_GALAGAPawn() {}
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AFACADE_USFX_GALAGAPawn_Statics::NewProp_FireRate,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AFACADE_USFX_GALAGAPawn_Statics::NewProp_MoveSpeed,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AFACADE_USFX_GALAGAPawn_Statics::NewProp_FireSound,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AFACADE_USFX_GALAGAPawn_Statics::NewProp_ShipCollision,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AFACADE_USFX_GALAGAPawn_Statics::NewProp_ShipExplosion,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AFACADE_USFX_GALAGAPawn_Statics::NewProp_ExplosionSoundShip,
 	};
 	const FCppClassTypeInfoStatic Z_Construct_UClass_AFACADE_USFX_GALAGAPawn_Statics::StaticCppClassTypeInfo = {
 		TCppClassTypeTraits<AFACADE_USFX_GALAGAPawn>::IsAbstract,
@@ -186,7 +229,7 @@ void EmptyLinkFunctionForGeneratedCodeFACADE_USFX_GALAGAPawn() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(AFACADE_USFX_GALAGAPawn, 2106481405);
+	IMPLEMENT_CLASS(AFACADE_USFX_GALAGAPawn, 3462605610);
 	template<> FACADE_USFX_GALAGA_API UClass* StaticClass<AFACADE_USFX_GALAGAPawn>()
 	{
 		return AFACADE_USFX_GALAGAPawn::StaticClass();

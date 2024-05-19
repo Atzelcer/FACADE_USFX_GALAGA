@@ -19,6 +19,10 @@ public:
 
 public:
 
+	virtual void Tick(float DeltaTime) override;
+
+	virtual void BeginPlay() override;
+
 	virtual void NotifyActorBeginOverlap(AActor* OtherActor) override;
 
 	virtual void Componente_Destruccion() override;

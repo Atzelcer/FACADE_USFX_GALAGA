@@ -31,7 +31,7 @@ APROYECTIL_P::APROYECTIL_P()
 		Projectil_Mesh->SetStaticMesh(MeshAsset.Object);
 
 		//// Modificar la escala del componente de malla
-		//FVector NewScale(3.0f, 10.0f, 0.0f); // Escala modificada
+		//FVector NewScale(-1.0f, -1.0f, -1.0f); // Escala modificada
 		//Projectil_Mesh->SetWorldScale3D(NewScale);
 	}
 
@@ -53,30 +53,21 @@ APROYECTIL_P::APROYECTIL_P()
 
 	// Controlando el movimiento del proyectil
 	Projectil_Movement = CreateDefaultSubobject<UProjectileMovementComponent>(TEXT("Projectil_Movement"));
-	Projectil_Movement->UpdatedComponent = Projectil_Mesh;
-	Projectil_Movement->InitialSpeed = 0.f; // velocidad inicial
-	Projectil_Movement->MaxSpeed = 0.f; // velocidad máxima
+	Projectil_Movement->InitialSpeed = 750.0f;
+	Projectil_Movement->MaxSpeed = 850.0f;
 	Projectil_Movement->bRotationFollowsVelocity = true;
-	Projectil_Movement->bShouldBounce = false; // no rebota
-	Projectil_Movement->ProjectileGravityScale = 0.f; // sin gravedad
+	Projectil_Movement->bShouldBounce = false;
+	Projectil_Movement->ProjectileGravityScale = 0.0f;
 
 	// Creando el componente de colisión del proyectil
 	Projectil_Collision = CreateDefaultSubobject<UCapsuleComponent>(TEXT("Projectil_Collision"));
 	Projectil_Collision->SetupAttachment(RootComponent);
 
 	// Estableciendo el tiempo de vida inicial del proyectil
-	InitialLifeSpan = 0.f;
+	InitialLifeSpan = 5.f;
 
 	// Daño predeterminado del proyectil
 	DanioProvocado = 0.f;
-
-	//Determinando la velocidad del proyectil
-	Projectil_Movement->InitialSpeed = 750.0f;
-	Projectil_Movement->MaxSpeed = 850.0f;
-
-	//Tiempo de vida del proyectil
-	InitialLifeSpan = 6.0f;
-
 	//Configurando el proyectil para que genere eventos de colision
 	Projectil_Collision->SetCapsuleHalfHeight(160.0f);
 	Projectil_Collision->SetCapsuleRadius(160.0f);
@@ -96,6 +87,11 @@ void APROYECTIL_P::Tick(float DeltaTime)
 
 }
 
+void APROYECTIL_P::Set_Danio(float Danio)
+{
+	Danio_D_B = Danio;
+}
+
 void APROYECTIL_P::NotifyActorBeginOverlap(AActor* OtherActor)
 {
 	Super::NotifyActorBeginOverlap(OtherActor);
@@ -105,6 +101,7 @@ void APROYECTIL_P::NotifyActorBeginOverlap(AActor* OtherActor)
 	if (Jugador)
 	{
 		DestroyPROYECTIL();
+		Jugador->Damage(Danio_D_B);
 	}
 }
 

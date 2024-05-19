@@ -1,5 +1,4 @@
 // Copyright Epic Games, Inc. All Rights Reserved.
-
 #include "FACADE_USFX_GALAGAPawn.h"
 #include "FACADE_USFX_GALAGAProjectile.h"
 #include "TimerManager.h"
@@ -11,6 +10,9 @@
 #include "Engine/CollisionProfile.h"
 #include "Engine/StaticMesh.h"
 #include "Kismet/GameplayStatics.h"
+#include "Components/CapsuleComponent.h"
+#include "UObject/ConstructorHelpers.h"
+#include "Particles/ParticleSystem.h"
 #include "Sound/SoundBase.h"
 
 const FName AFACADE_USFX_GALAGAPawn::MoveForwardBinding("MoveForward");
@@ -20,6 +22,7 @@ const FName AFACADE_USFX_GALAGAPawn::FireRightBinding("FireRight");
 
 AFACADE_USFX_GALAGAPawn::AFACADE_USFX_GALAGAPawn()
 {	
+
 	static ConstructorHelpers::FObjectFinder<UStaticMesh> ShipMesh(TEXT("/Game/TwinStick/Meshes/TwinStickUFO.TwinStickUFO"));
 	// Create the mesh component
 	ShipMeshComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("ShipMesh"));
@@ -36,7 +39,7 @@ AFACADE_USFX_GALAGAPawn::AFACADE_USFX_GALAGAPawn()
 	CameraBoom->SetupAttachment(RootComponent);
 	CameraBoom->SetUsingAbsoluteRotation(true); // Don't want arm to rotate when ship does
 	CameraBoom->TargetArmLength = 1900.f;
-	CameraBoom->SetRelativeRotation(FRotator(-180.f, 0.f, 0.f));
+	CameraBoom->SetRelativeRotation(FRotator(-90.f, 0.f, 0.f));
 	CameraBoom->bDoCollisionTest = false; // Don't want to pull camera in when it collides with level
 
 	// Create a camera...
@@ -44,12 +47,33 @@ AFACADE_USFX_GALAGAPawn::AFACADE_USFX_GALAGAPawn()
 	CameraComponent->SetupAttachment(CameraBoom, USpringArmComponent::SocketName);
 	CameraComponent->bUsePawnControlRotation = false;	// Camera does not rotate relative to arm
 
+
+	// campo de colision
+	ShipCollision = CreateDefaultSubobject<UCapsuleComponent>(TEXT("Collision Player"));
+	ShipCollision->SetCapsuleHalfHeight(80.0f);
+
+	// creamos el efecto de explosion
+	static ConstructorHelpers::FObjectFinder<UParticleSystem> ParticleAsset(TEXT("ParticleSystem'/Game/StarterContent/Particles/P_Explosion.P_Explosion'"));
+	if (ParticleAsset.Succeeded())
+	{
+		ShipExplosion = Cast<UParticleSystem>(ParticleAsset.Object);
+	}
+
+	// creando sonido de explosion
+	static ConstructorHelpers::FObjectFinder<USoundBase> ExplosionAudioAA(TEXT("SoundWave'/Game/StarterContent/Audio/Explosion02.Explosion02'"));
+	if (ExplosionAudioAA.Succeeded())
+	{
+		ExplosionSoundShip = ExplosionAudioAA.Object;
+	}
+
 	// Movement
 	MoveSpeed = 1000.0f;
 	// Weapon
 	GunOffset = FVector(90.f, 0.f, 0.f);
 	FireRate = 0.1f;
 	bCanFire = true;
+
+	Health_Nave_Protagonista = 1000;
 }
 
 void AFACADE_USFX_GALAGAPawn::SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent)
@@ -65,6 +89,16 @@ void AFACADE_USFX_GALAGAPawn::SetupPlayerInputComponent(class UInputComponent* P
 
 void AFACADE_USFX_GALAGAPawn::Tick(float DeltaSeconds)
 {
+	Super::Tick(DeltaSeconds);
+
+	if (Health_Nave_Protagonista <= 0) 
+	{
+		Componentes_Colision();
+	}
+
+	  
+	GEngine->AddOnScreenDebugMessage(-1, 0.f, FColor::Cyan, FString::Printf(TEXT("Vida  : %f"), Health_Nave_Protagonista));
+
 	// Find movement direction
 	const float ForwardValue = GetInputAxisValue(MoveForwardBinding);
 	const float RightValue = GetInputAxisValue(MoveRightBinding);
@@ -137,7 +171,21 @@ void AFACADE_USFX_GALAGAPawn::ShotTimerExpired()
 	bCanFire = true;
 }
 
-void AFACADE_USFX_GALAGAPawn::Damege(float Danio_)
+void AFACADE_USFX_GALAGAPawn::Damage(float Danio_)
 {
+	Health_Nave_Protagonista -= Danio_;
+}
+
+void AFACADE_USFX_GALAGAPawn::Componentes_Colision()
+{
+	//Efecto de Explosion 
+	if (ShipExplosion)
+		UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), ShipExplosion, GetActorTransform());
+	//Sonido de la explosion
+
+	if (ExplosionSoundShip != nullptr)
+		UGameplayStatics::PlaySoundAtLocation(this, ExplosionSoundShip, GetActorLocation());
+
+	this->Destroy();
 }
 

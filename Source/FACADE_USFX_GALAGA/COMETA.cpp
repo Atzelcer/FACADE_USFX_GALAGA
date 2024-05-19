@@ -43,6 +43,7 @@ ACOMETA::ACOMETA()
 
 void ACOMETA::Tick(float DeltaTime)
 {
+	Super::Tick(DeltaTime);
 }
 
 void ACOMETA::NotifyActorBeginOverlap(AActor* OtherActor)

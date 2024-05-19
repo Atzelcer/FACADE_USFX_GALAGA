@@ -11,6 +11,7 @@ class FACADE_USFX_GALAGA_API AP_FM_FABRICA_NAVES_P : public AP_FM_FABRICA_GENERA
 {
 	GENERATED_BODY()
 
+
 public:
 
 	// metodo para la creacion de las naves

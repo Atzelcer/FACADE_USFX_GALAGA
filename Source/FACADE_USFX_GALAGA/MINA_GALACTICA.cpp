@@ -41,6 +41,8 @@ AMINA_GALACTICA::AMINA_GALACTICA()
 
 void AMINA_GALACTICA::Tick(float DeltaTime)
 {
+	Super::Tick(DeltaTime);
+	
 }
 
 void AMINA_GALACTICA::NotifyActorBeginOverlap(AActor* OtherActor)

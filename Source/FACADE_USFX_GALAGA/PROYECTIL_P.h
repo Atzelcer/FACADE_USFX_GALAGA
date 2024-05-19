@@ -53,11 +53,16 @@ protected:
 
 public:	
 
+	float Danio_D_B;
+
 	//Danio del proyectil 
 	float DanioProvocado;
 
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
+
+
+	void Set_Danio(float Danio);
 
 
 	virtual void NotifyActorBeginOverlap(AActor* OtherActor);

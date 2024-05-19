@@ -5,6 +5,8 @@
 #include "SATELITE.h"
 #include "METEORO.h"
 
+
+
 AOBSTACULOS_ESPACIALES_P* AP_FM_FABRICA_OBSTACULOS_01::Crear_Obstaculos(FString Obstaculo_Identificador)
 {
     FVector SpawnLocation = FVector(1770.0f, FMath::RandRange(-1780, 1780), 210.0f);

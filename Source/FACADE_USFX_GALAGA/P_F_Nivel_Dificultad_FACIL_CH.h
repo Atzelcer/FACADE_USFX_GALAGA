@@ -4,7 +4,10 @@
 
 #include "CoreMinimal.h"
 #include "P_F_Nivel_Dificultad_CA.h"
-
+#include "NAVE_ENEMIGA_P.h"
+#include "OBSTACULOS_ESPACIALES_P.h"
+#include "P_FM_FABRICA_NAVES_P.h"
+#include "P_FM_FABRICA_OBSTACULOS_01.h"
 #include "P_F_Nivel_Dificultad_FACIL_CH.generated.h"
 
 
@@ -24,34 +27,45 @@ protected:
 
 public:
 
-	class ANAVE_ENEMIGA_P* NAVE_ENEMIGA_A;
-
-	class AOBSTACULOS_ESPACIALES_P* OBSTACULOS_ESPACIALES_A;
+	// Variables de configuración actual
+	float CurrentVidaNaves;
+	float CurrentVelocidadNaves;
+	float CurrentDanioDisparoNaves;
+	float CurrentVidaObstaculos;
+	float CurrentDanioObstaculos;
+	float CurrentVelocidadObstaculos;
 	
 	class AP_FM_FABRICA_OBSTACULOS_01* FABRICA_OBSTACULOS_01;
 
-	class AP_FM_FABRICA_NAVES_P* FABRICA_NAVES;
+	class AP_FM_FABRICA_NAVES_P* FABRICA_NAVES_A;
 
 
 	float TiempoDesdeUltimaNave;
+	float TiempoDesdeUltimoObstaculo;
 	float IntervaloNave;
-	int32 NivelActual;
-	float TiempoNivel;
-
+	float IntervaloObstaculo;
 
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
-	// Implementación de métodos virtuales puros
-	virtual void Configurar_Vida_Naves(float Vida) override;
+	FString SeleccionarTipoDeNave() const;
+	FString SeleccionarTipoDeObstaculo() const;
 
-	virtual void Configurar_Velocidad_Naves(float Velocidad) override;
+	// Añade los tipos de retorno a las funciones.
+	ANAVE_ENEMIGA_P* GenerarYConfigurarNave();
+	AOBSTACULOS_ESPACIALES_P* GenerarYConfigurarObstaculo();
 
-	virtual void Configurar_Danio_Disparo_Naves(float Danio_Disparo) override;
 
-	virtual void Configurar_Vida_Obstaculos(float Vida) override;
+	// Métodos de configuración
+	void Configurar_Vida_Naves(ANAVE_ENEMIGA_P* Nave, float Vida);
+	void Configurar_Velocidad_Naves(ANAVE_ENEMIGA_P* Nave, float Velocidad);
+	void Configurar_Danio_Disparo_Naves(ANAVE_ENEMIGA_P* Nave, float Danio_Disparo);
 
-	virtual void Configurar_Danio_Obstaculos(float Velocidad) override;
 
-	virtual void Configurar_Velocidad_Obstaculos(float Danio) override;
+	void Configurar_Vida_Obstaculos(AOBSTACULOS_ESPACIALES_P* Obstaculo, float Vida);
+	void Configurar_Danio_Obstaculos(AOBSTACULOS_ESPACIALES_P* Obstaculo, float Danio);
+	void Configurar_Velocidad_Obstaculos(AOBSTACULOS_ESPACIALES_P* Obstaculo, float Velocidad);
+
+
+	void ConfigurarTodo(float VidaNaves, float VelocidadNaves, float DanioDisparoNaves, float VidaObstaculos, float DanioObstaculos, float VelocidadObstaculos);
 };

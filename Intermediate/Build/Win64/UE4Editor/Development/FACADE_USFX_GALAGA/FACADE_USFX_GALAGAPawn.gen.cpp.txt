@@ -1,0 +1,11 @@
+D:\UNREAL_ENGINGE_4.27\FACADE_USFX_GALAGA\Intermediate\Build\Win64\UE4Editor\Development\FACADE_USFX_GALAGA\Definitions.FACADE_USFX_GALAGA.h
+C:\JUEGOS\UE_4.27\Engine\Source\Runtime\CoreUObject\Public\UObject/GeneratedCppIncludes.h
+C:\JUEGOS\UE_4.27\Engine\Source\Runtime\CoreUObject\Public\UObject/MetaData.h
+D:\UNREAL_ENGINGE_4.27\FACADE_USFX_GALAGA\Source\FACADE_USFX_GALAGA/FACADE_USFX_GALAGAPawn.h
+C:\JUEGOS\UE_4.27\Engine\Source\Runtime\Engine\Classes\GameFramework/Character.h
+C:\JUEGOS\UE_4.27\Engine\Source\Runtime\Engine\Classes\GameFramework/CharacterMovementReplication.h
+C:\JUEGOS\UE_4.27\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\CharacterMovementReplication.generated.h
+C:\JUEGOS\UE_4.27\Engine\Source\Runtime\Engine\Classes\GameFramework/RootMotionSource.h
+C:\JUEGOS\UE_4.27\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\RootMotionSource.generated.h
+C:\JUEGOS\UE_4.27\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\Character.generated.h
+D:\UNREAL_ENGINGE_4.27\FACADE_USFX_GALAGA\Intermediate\Build\Win64\UE4Editor\Inc\FACADE_USFX_GALAGA\FACADE_USFX_GALAGAPawn.generated.h

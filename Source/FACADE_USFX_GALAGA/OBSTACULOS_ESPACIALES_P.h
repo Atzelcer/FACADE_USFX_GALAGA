@@ -58,12 +58,17 @@ public:
 
 	virtual void NotifyActorBeginOverlap(AActor* OtherActor);
 
+	virtual void Recibir_Danio(float Danio_O);
 
-	void Set_Velocidad_Obstaculos(float Velocidad_Obstaculos);
 
-	void Set_Vida_Obstaculos(float Vida_Obstaculos);
+	FORCEINLINE void Set_Velocidad_Obstaculos(float Velocidad_Obstaculos) { Velocidad  = Velocidad_Obstaculos; }
 
-	void Set_Danio_Obstaculos(float Danio_Obstaculos);
+	FORCEINLINE void Set_Vida_Obstaculos(float Vida_Obstaculos)  { Life = Vida_Obstaculos ; }
+
+	FORCEINLINE void Set_Danio_Obstaculos(float Danio_Obstaculos) { Danio_Obst = Danio_Obstaculos; }
+
+protected:
+	void Movimiento_Ostaculos(float DeltaTime);
 
 protected:
 

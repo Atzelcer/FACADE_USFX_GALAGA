@@ -15,7 +15,7 @@
 ANAVE_ENEMIGA_03::ANAVE_ENEMIGA_03()
 {
 
-	PrimaryActorTick.bCanEverTick = true;
+	//PrimaryActorTick.bCanEverTick = true;
 
 
 	//|*| COMPONENTE MALLA DE LA NAVE |*|
@@ -24,9 +24,9 @@ ANAVE_ENEMIGA_03::ANAVE_ENEMIGA_03()
 	{
 		Nave_Mesh->SetStaticMesh(MeshAsset.Object);
 
-		//// Modificar la escala del componente de malla
-		//FVector NewScale(0.500f, 0.500f, 0.500f); // Escala modificada
-		//Nave_Mesh->SetWorldScale3D(NewScale);
+		// Modificar la escala del componente de malla
+		FVector NewScale(1.5f, 1.5f, 1.5f); // Escala modificada
+		Nave_Mesh->SetWorldScale3D(NewScale);
 	}
 
 	//|*| COMPONENTE DE PARTICULA DE LA NAVE |*|
@@ -61,6 +61,22 @@ ANAVE_ENEMIGA_03::ANAVE_ENEMIGA_03()
 
 }
 
+
+void ANAVE_ENEMIGA_03::Tick(float DeltaTime)
+{
+	Super::Tick(DeltaTime);
+	
+	if (Life <= 0) 
+	{
+		Componente_Destruccion();
+	}
+}
+
+void ANAVE_ENEMIGA_03::BeginPlay()
+{
+	Super::BeginPlay();
+}
+
 void ANAVE_ENEMIGA_03::NotifyActorBeginOverlap(AActor* OtherActor)
 {
 	Super::NotifyActorBeginOverlap(OtherActor);
@@ -69,29 +85,20 @@ void ANAVE_ENEMIGA_03::NotifyActorBeginOverlap(AActor* OtherActor)
 
 	if (Jugador)
 	{
-		Componente_Destruccion();
+		Jugador->Damage(Danio_Disparo);
+		Recibir_Danio(50.f);
 	}
 
 }
 
 void ANAVE_ENEMIGA_03::Componente_Destruccion()
-{
-	// Reproducir el sonido de la nave
-	UGameplayStatics::PlaySoundAtLocation(GetWorld(), Sonido_Nave, GetActorLocation());
-
-	// Crear una explosion en la nave
+{	
 	UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), Explosion_Nave, GetActorLocation());
-
-	// Destruir la nave
+	UGameplayStatics::PlaySoundAtLocation(GetWorld(), Sonido_Nave, GetActorLocation());
 	Destroy();
 }
 
 void ANAVE_ENEMIGA_03::Recibir_Danio(float Danio)
 {
 	Life -= Danio;
-
-	if (Life <= 0)
-	{
-		Componente_Destruccion();
-	}
 }

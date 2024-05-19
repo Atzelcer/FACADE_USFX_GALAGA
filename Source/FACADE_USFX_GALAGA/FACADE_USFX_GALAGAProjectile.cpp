@@ -6,6 +6,15 @@
 #include "Components/StaticMeshComponent.h"
 #include "GameFramework/ProjectileMovementComponent.h"
 #include "Engine/StaticMesh.h"
+#include "NAVE_ENEMIGA_P.h"
+#include "NAVE_ENEMIGA_01.h"
+#include "NAVE_ENEMIGA_02.h"
+#include "NAVE_ENEMIGA_03.h"
+
+#include "NAVE_ENEMIGA_05.h"
+#include "OBSTACULOS_ESPACIALES_P.h"
+
+
 
 AFACADE_USFX_GALAGAProjectile::AFACADE_USFX_GALAGAProjectile() 
 {
@@ -35,6 +44,23 @@ AFACADE_USFX_GALAGAProjectile::AFACADE_USFX_GALAGAProjectile()
 
 void AFACADE_USFX_GALAGAProjectile::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit)
 {
+
+	ANAVE_ENEMIGA_P* Nave = Cast<ANAVE_ENEMIGA_P>(OtherActor);
+
+	if (Nave)
+	{
+		Nave->Recibir_Danio(50.f);
+		//Destroy();
+	}
+
+	AOBSTACULOS_ESPACIALES_P* Obstaculo = Cast<AOBSTACULOS_ESPACIALES_P>(OtherActor);
+
+	if (Obstaculo)
+	{
+		Obstaculo->Recibir_Danio(50.f);
+		//Destroy();
+	}
+
 	// Only add impulse and destroy projectile if we hit a physics
 	if ((OtherActor != nullptr) && (OtherActor != this) && (OtherComp != nullptr) && OtherComp->IsSimulatingPhysics())
 	{
@@ -43,3 +69,4 @@ void AFACADE_USFX_GALAGAProjectile::OnHit(UPrimitiveComponent* HitComp, AActor* 
 
 	Destroy();
 }
+

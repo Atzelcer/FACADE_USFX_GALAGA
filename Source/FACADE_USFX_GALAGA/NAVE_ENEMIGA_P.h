@@ -6,7 +6,7 @@
 #include "GameFramework/Actor.h"
 #include "NAVE_ENEMIGA_P.generated.h"
 
-UCLASS(abstract)
+UCLASS()
 class FACADE_USFX_GALAGA_API ANAVE_ENEMIGA_P : public AActor
 {
 	GENERATED_BODY()
@@ -43,7 +43,7 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
-protected:
+public:
 
     FString Identificador_Nave;
     float Velocity;
@@ -53,8 +53,11 @@ protected:
     FVector Distancia_Disparo;
     float Danio_Recibido;
     float Danio_Disparo;
-    float Life ;
+    float Life;
+    float Tiempo_M;
 
+
+    float Distancia_D_CB;
 
 	virtual void NotifyActorBeginOverlap(AActor* OtherActor);
 
@@ -62,21 +65,21 @@ protected:
 
 	virtual void Recibir_Danio(float Danio);
 
-    virtual void Disparar();
+    virtual void Disparo_Nave(float DeltaTime);
 
-    virtual void Mover_Nave(float Velocidad_Movimiento);
+    virtual void Movimiento_Nave(float DeltaTime);
 
 public:
 
-    void Set_Vida(float Vida_A);
+    FORCEINLINE void Set_Vida(float Vida_A) { Life = Vida_A; }
 
-	void Set_Velocidad_Nave(float Velocidad_A);
+    FORCEINLINE void Set_Velocidad_Nave(float Velocidad_A) { Velocity = Velocidad_A ;}
    
-	void Set_Danio_Disparo(float Danio_A);
-
+    FORCEINLINE void Set_Danio_Disparo(float Danio_A) { Danio_Disparo = Danio_A ;}
 
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
+
 
 };

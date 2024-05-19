@@ -71,7 +71,7 @@ void EmptyLinkFunctionForGeneratedCodeNAVE_ENEMIGA_04() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(ANAVE_ENEMIGA_04, 2570408396);
+	IMPLEMENT_CLASS(ANAVE_ENEMIGA_04, 3102891208);
 	template<> FACADE_USFX_GALAGA_API UClass* StaticClass<ANAVE_ENEMIGA_04>()
 	{
 		return ANAVE_ENEMIGA_04::StaticClass();
